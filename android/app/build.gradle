@@ -80,20 +80,20 @@ android {
         }
     }
 
-    flavorDimensions "default"
+    flavorDimensions "development"
     productFlavors { 
         production {
-            dimension "default"
+            dimension "produccion"
             applicationIdSuffix ""
             manifestPlaceholders = [appName: "Counter"]
         }
         staging {
-            dimension "default"
+            dimension "QA"
             applicationIdSuffix ".stg"
             manifestPlaceholders = [appName: "[STG] Counter"]
         }        
         development {
-            dimension "default"
+            dimension "development"
             applicationIdSuffix ".dev"
             manifestPlaceholders = [appName: "[DEV] Counter"]
         }
