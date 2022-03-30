@@ -29,7 +29,7 @@ class CounterView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: const Text( 'Contador' )),
+      appBar: AppBar(title: const Text( 'Contador desde Development Branch' )),
       body: const Center(child: CounterText()),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
