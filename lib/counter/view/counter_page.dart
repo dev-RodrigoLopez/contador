@@ -6,6 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:counter/counter/counter.dart';
+import 'package:counter/data/provider/local/global_bloc/global_bloc.dart';
 import 'package:counter/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,25 +28,48 @@ class CounterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final globalBloc = BlocProvider.of<GlobalBloc>(context);
     final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
-      body: const Center(child: CounterText()),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().increment(),
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 8),
-          FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().decrement(),
-            child: const Icon(Icons.remove),
-          ),
-        ],
+      body: BlocBuilder<GlobalBloc, GlobalState>(
+        builder: ( context, state ){
+          return ListView.builder(
+            itemCount: state.lpokemon.length,
+            itemBuilder: ( BuildContext context, int i ){
+
+              return ListTile(
+                title: Text( state.lpokemon[i] ),
+                leading: const Icon( Icons.catching_pokemon ),
+              );
+
+            }
+          );
+        },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+
+            globalBloc.getPokemon();
+        },
+        child: const Icon(Icons.catching_pokemon),
+      ),
+      // body: const Center(child: CounterText()),
+      // floatingActionButton: Column(
+      //   mainAxisAlignment: MainAxisAlignment.end,
+      //   crossAxisAlignment: CrossAxisAlignment.end,
+      //   children: [
+      //     FloatingActionButton(
+      //       onPressed: () => context.read<CounterCubit>().increment(),
+      //       child: const Icon(Icons.add),
+      //     ),
+      //     const SizedBox(height: 8),
+      //     FloatingActionButton(
+      //       onPressed: () => context.read<CounterCubit>().decrement(),
+      //       child: const Icon(Icons.remove),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

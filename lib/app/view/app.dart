@@ -6,12 +6,37 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:counter/counter/counter.dart';
+import 'package:counter/data/provider/local/global_bloc/global_bloc.dart';
+import 'package:counter/data/provider/network/rest_api.dart';
 import 'package:counter/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => GlobalBloc( restApi: RestApi() )),
+      ], 
+      child: BuildApp()
+    );
+   
+  }
+}
+
+class BuildApp extends StatefulWidget {
+  BuildApp({Key? key}) : super(key: key);
+
+  @override
+  State<BuildApp> createState() => _MaterialAppState();
+}
+
+class _MaterialAppState extends State<BuildApp> {
+
 
   @override
   Widget build(BuildContext context) {
