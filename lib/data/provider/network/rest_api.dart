@@ -22,7 +22,6 @@ class RestApi{
         lpokemones.add( respData['name'].toString() );
 
       }catch(error){
-        print( error );
         return lpokemones;
       }
     }
