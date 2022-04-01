@@ -13,8 +13,7 @@ abstract class GlobalEvent extends Equatable{
 
 class AddListaPokemonEvent extends GlobalEvent{
 
-  final List<String> lpokemon;
-
   const AddListaPokemonEvent(this.lpokemon);
+  final List<String> lpokemon;
 
 }

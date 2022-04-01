@@ -3,11 +3,12 @@ part of 'global_bloc.dart';
 
 class GlobalState extends Equatable {
   
-  final List<String> lpokemon;
-
   const GlobalState({
     this.lpokemon = const [],
   });
+  
+  final List<String> lpokemon;
+
 
  GlobalState copyWith({
     List<String>? lpokemon,

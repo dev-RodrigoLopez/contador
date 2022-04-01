@@ -43,15 +43,13 @@ class CounterView extends StatelessWidget {
                 leading: const Icon( Icons.catching_pokemon ),
               );
 
-            }
+            },
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-
-            globalBloc.getPokemon();
-        },
+        // onPressed:() => globalBloc.getPokemon(),
+        onPressed: globalBloc.getPokemon ,
         child: const Icon(Icons.catching_pokemon),
       ),
       // body: const Center(child: CounterText()),

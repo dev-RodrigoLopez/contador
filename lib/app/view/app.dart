@@ -22,14 +22,14 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => GlobalBloc( restApi: RestApi() )),
       ], 
-      child: BuildApp()
+      child: const BuildApp(),
     );
    
   }
 }
 
 class BuildApp extends StatefulWidget {
-  BuildApp({Key? key}) : super(key: key);
+  const BuildApp({Key? key}) : super(key: key);
 
   @override
   State<BuildApp> createState() => _MaterialAppState();

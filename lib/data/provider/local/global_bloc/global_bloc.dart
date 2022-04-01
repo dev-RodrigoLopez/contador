@@ -7,15 +7,17 @@ part 'global_state.dart';
 
 class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
 
-  RestApi restApi;
 
   GlobalBloc({
-    required this.restApi
+    required this.restApi,
   }) : super(const GlobalState()) {
 
-    on<AddListaPokemonEvent>((event, emit) => emit( state.copyWith( lpokemon: event.lpokemon  ) ));
+    on<AddListaPokemonEvent>((event, emit) 
+      => emit( state.copyWith( lpokemon: event.lpokemon  ) ),);
 
   }
+  
+  RestApi restApi;
 
   Future getPokemon() async{
 
@@ -23,7 +25,4 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
     add( AddListaPokemonEvent( newPokemones ) );
 
   }
-
 }
-
-
